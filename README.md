@@ -12,16 +12,17 @@
 
 ## Stack
 - React
-    - components
-    - hooks
-    - state
-    - props
+    - Components
+    - Hooks
+    - State
+    - Props
+    - Conditional rendering
     
 - React Router DOM for:
     - client side routing, 
     - Nested Routes
     - Routing with query params
-    - dynamic routing
+    - dynamic route
     - active links
     - relative links
     - layouts

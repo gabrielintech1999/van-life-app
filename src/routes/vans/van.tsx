@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getVanTypeColor } from "../../utils/utils";
 
 interface Van {
-  id: string;  // Certifique-se de que o tipo de `id` está correto
+  id: string; // Certifique-se de que o tipo de `id` está correto
   imageUrl: string;
   name: string;
-  price: number; 
+  price: number;
   description: string;
   type: string;
 }
@@ -18,7 +19,7 @@ export default function VanDetail(): JSX.Element {
     const res = await fetch("/server/db.json");
     const data: Van[] = await res.json();
 
-    const pickVan = data.find(van => van.id === id);
+    const pickVan = data.find((van) => van.id === id);
     setVan(pickVan || null);
   }
 
@@ -37,7 +38,11 @@ export default function VanDetail(): JSX.Element {
           <img src={van.imageUrl} alt={van.name} />
         </div>
         <div className="my-2">
-          <span className="bg-red-600 inline-block py-1 px-4 font-bold text-white rounded">
+          <span
+            className={`inline-block py-1 px-4 font-bold text-white rounded ${getVanTypeColor(
+              van.type
+            )}`}
+          >
             {van.type}
           </span>
         </div>
@@ -45,13 +50,17 @@ export default function VanDetail(): JSX.Element {
           <h1>{van.name}</h1>
         </div>
         <div className="my-2">
-          <p><b>${van.price}</b>/day</p>
+          <p>
+            <b>${van.price}</b>/day
+          </p>
         </div>
         <div className="my-2">
           <p>{van.description}</p>
         </div>
         <div>
-          <button className="w-full bg-red-600 p-2 text-white font-bold rounded">Rent this van</button>
+          <button className="w-full bg-red-600 p-2 text-white font-bold rounded">
+            Rent this van
+          </button>
         </div>
       </div>
     </main>
