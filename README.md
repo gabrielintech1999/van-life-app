@@ -8,6 +8,7 @@
 - [x] make API calls with mock server
 - [x] make the van page
 - [x] make the van detail page
+- [x] make the layout
 
 
 ## Stack
@@ -20,12 +21,11 @@
     
 - React Router DOM for:
     - client side routing, 
-    - Nested Routes
-    - Routing with query params
     - dynamic route
+    - Nested Routes / layouts
+    - Routing with query params
     - active links
     - relative links
-    - layouts
     - protected route
 - Tailwind
     - utility classes
