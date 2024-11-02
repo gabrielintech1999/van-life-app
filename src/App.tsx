@@ -32,7 +32,6 @@ import Income from "./routes/host/income";
 import Reviews from "./routes/host/reviews";
 import HostVans from "./routes/host/hostVans";
 import HostVanLayout from "./routes/host/HostVanDetail/HostVanLayout";
-import HostVanDetail from "./routes/host/HostVanDetail/HostVanDetail";
 import HostVanPricing from "./routes/host/HostVanDetail/hostVanPricing";
 import HostVanPhotos from "./routes/host/HostVanDetail/hostVanPhotos";
 
