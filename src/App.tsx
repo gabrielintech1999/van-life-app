@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/home";
 import About from "./routes/about";
 import Vans from "./routes/vans/vans";
-import VanDetail from "./routes/vans/van";
+import VanDetail from "./routes/vans/vanDetail";
 import RootLayout from "./RootLayout";
 import HostLayout from "./routes/host/HostLayout";
 import Dashboard from "./routes/host/host";

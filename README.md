@@ -39,8 +39,5 @@
 
 ## features
 - Filters
-- Van Details
-- Browse Vans
 - User Registration/Login
-- 
 

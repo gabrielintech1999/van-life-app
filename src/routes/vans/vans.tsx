@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getVanTypeColor } from "../../utils/utils";
-
-// #135151 - verde
-// #DD775B - laranja
-// preto -
-
+import { useSearchParams } from "react-router-dom";
+import VanCard from "../../components/VanCard";
 
 interface Vans {
   id: number;
@@ -17,42 +12,95 @@ interface Vans {
 }
 
 export default function Vans() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [vans, setVans] = useState<Vans[]>([]);
 
-
-  
+  const typeFilter: string | null = searchParams.get("type");
 
   async function getVans(): Promise<void> {
     const res = await fetch("/server/db.json");
     const data = await res.json();
-
-    console.log(data.vans);
     setVans(data.vans);
   }
+
+  const displayVans = typeFilter === null 
+    ? vans 
+    : vans.filter((van) => van.type === typeFilter);
 
   useEffect(() => {
     getVans();
   }, []);
+
+  // Function to handle filter changes
+  const handleFilterChange = (type: string | null) => {
+    if (type === null) {
+      // Clear the filter
+      setSearchParams({});
+    } else {
+      // Set the filter
+      setSearchParams({ type });
+    }
+  };
+
   return (
-    <main className="grid grid-cols-2 gap-4 mx-4 h-screen">
-      {vans.map((van) => (
-        <article key={van.id}>
-          <Link to={`/vans/${van.id}`}>
-            <div>
-              <img src={van.imageUrl} alt={van.name} />
-            </div>
-            <div className="flex justify-between">
-              <h4>{van.name}</h4>
-              <b>${van.price}</b>
-            </div>
-            <button
-              className={`py-1 px-4 rounded text-white my-2 font-bold ${getVanTypeColor(van.type)}`}
-            >
-              {van.type}
-            </button>
-          </Link>
-        </article>
-      ))}
-    </main>
+    <div className="p-4">
+      {/* Filter buttons */}
+      <div className="mb-6 flex gap-4">
+        <button
+          onClick={() => handleFilterChange(null)}
+          className={`px-4 py-2 rounded ${
+            typeFilter === null 
+              ? "bg-[#135151] text-white" 
+              : "bg-gray-200"
+          }`}
+        >
+          All
+        </button>
+        <button
+          onClick={() => handleFilterChange("simple")}
+          className={`px-4 py-2 rounded ${
+            typeFilter === "simple" 
+              ? "bg-[#DD775B] text-white" 
+              : "bg-gray-200"
+          }`}
+        >
+          Simple
+        </button>
+        <button
+          onClick={() => handleFilterChange("luxury")}
+          className={`px-4 py-2 rounded ${
+            typeFilter === "luxury" 
+              ? "bg-[#000000] text-white" 
+              : "bg-gray-200"
+          }`}
+        >
+          Luxury
+        </button>
+        <button
+          onClick={() => handleFilterChange("rugged")}
+          className={`px-4 py-2 rounded ${
+            typeFilter === "rugged" 
+              ? "bg-[#135151] text-white" 
+              : "bg-gray-200"
+          }`}
+        >
+          Rugged
+        </button>
+      </div>
+
+      {/* Vans grid */}
+      <main className="grid grid-cols-2 gap-4 h-screen">
+        {displayVans.map((van) => (
+          <VanCard
+            key={van.id}
+            id={van.id}
+            imageUrl={van.imageUrl}
+            name={van.name}
+            price={van.price}
+            type={van.type}
+          />
+        ))}
+      </main>
+    </div>
   );
 }
