@@ -1,25 +1,3 @@
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Home from "./routes/home";
-// import About from "./routes/about";
-// import Vans from "./routes/vans/vans";
-// import VanDetail from "./routes/vans/van";
-// import RootLayout from "./RootLayout";
-
-// export default function App() {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<RootLayout />}>
-//           <Route index element={<Home />} />
-//           <Route path="/about" element={<About />} />
-//           <Route path="/vans" element={<Vans />} />
-//           <Route path="/vans/:id" element={<VanDetail />} />
-//         </Route>
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// }
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/home";
 import About from "./routes/about";
@@ -34,6 +12,7 @@ import HostVans from "./routes/host/hostVans";
 import HostVanLayout from "./routes/host/HostVanDetail/HostVanLayout";
 import HostVanPricing from "./routes/host/HostVanDetail/hostVanPricing";
 import HostVanPhotos from "./routes/host/HostVanDetail/hostVanPhotos";
+import HostVanDetail from "./routes/host/HostVanDetail/hostVanDetail";
 
 export default function App() {
   return (
