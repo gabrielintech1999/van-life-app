@@ -26,8 +26,8 @@ export default function Vans() {
     const res = await fetch("/server/db.json");
     const data = await res.json();
 
-    console.log(data);
-    setVans(data);
+    console.log(data.vans);
+    setVans(data.vans);
   }
 
   useEffect(() => {

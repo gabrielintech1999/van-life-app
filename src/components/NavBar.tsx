@@ -9,6 +9,12 @@ export default function NavBar() {
         </NavLink>
       </div>
       <nav className="flex gap-2">
+      <NavLink
+          className={({ isActive }) => (isActive ? "font-bold" : "font-normal")}
+          to="/host"
+        >
+          Host
+        </NavLink>
         <NavLink
           className={({ isActive }) => (isActive ? "font-bold" : "font-normal")}
           to="/about"
@@ -21,12 +27,7 @@ export default function NavBar() {
         >
           Vans
         </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? "font-bold" : "font-normal")}
-          to="/host"
-        >
-          Host
-        </NavLink>
+        
       </nav>
     </header>
   );

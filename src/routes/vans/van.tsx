@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { getVanTypeColor } from "../../utils/utils";
 
 interface Van {
-  id: string; // Certifique-se de que o tipo de `id` está correto
+  id: string;
   imageUrl: string;
   name: string;
   price: number;
@@ -11,21 +11,25 @@ interface Van {
   type: string;
 }
 
+interface ApiResponse {
+  vans: Van[];
+}
+
 export default function VanDetail(): JSX.Element {
   const { id } = useParams();
   const [van, setVan] = useState<Van | null>(null);
 
-  async function getVan(): Promise<void> {
+  const getVan = useCallback(async (): Promise<void> => {
     const res = await fetch("/server/db.json");
-    const data: Van[] = await res.json();
-
-    const pickVan = data.find((van) => van.id === id);
+    const data: ApiResponse = await res.json();
+    
+    const pickVan = data.vans.find((van: Van) => van.id === id);
     setVan(pickVan || null);
-  }
+  }, [id]);
 
   useEffect(() => {
     getVan();
-  }, [id]);
+  }, [getVan]);
 
   if (!van) {
     return <p>Loading...</p>;

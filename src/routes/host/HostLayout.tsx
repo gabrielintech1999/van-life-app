@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 function HostLayout() {
   return (
-    <main>
+    <main className="min-h-screen">
       <nav className="flex gap-2 p-4">
         <NavLink
           end 
