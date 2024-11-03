@@ -39,5 +39,6 @@
 
 ## features
 - Filters
+- preserving filter state | maintaining filter state during navigation
 - User Registration/Login
 

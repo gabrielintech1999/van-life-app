@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { getVanTypeColor } from "../../utils/utils";
 
 interface Van {
@@ -9,6 +9,7 @@ interface Van {
   price: number;
   description: string;
   type: string;
+
 }
 
 interface ApiResponse {
@@ -17,6 +18,9 @@ interface ApiResponse {
 
 export default function VanDetail(): JSX.Element {
   const { id } = useParams();
+  const {state} = useLocation()
+  console.log(state);
+  
   const [van, setVan] = useState<Van | null>(null);
 
   const getVan = useCallback(async (): Promise<void> => {
@@ -38,6 +42,11 @@ export default function VanDetail(): JSX.Element {
   return (
     <main className="p-4 h-screen">
       <div>
+        <div>
+        <div className="py-4">
+        <Link to={`..?${state === null ? "": `type=${state}`}`} relative="path"> &larr; Back To {state ? state :"all"} vans</Link>
+      </div>
+        </div>
         <div>
           <img src={van.imageUrl} alt={van.name} />
         </div>
@@ -61,7 +70,7 @@ export default function VanDetail(): JSX.Element {
         <div className="my-2">
           <p>{van.description}</p>
         </div>
-        <div>
+        <div >
           <button className="w-full bg-red-600 p-2 text-white font-bold rounded">
             Rent this van
           </button>

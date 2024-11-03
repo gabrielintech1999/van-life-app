@@ -38,7 +38,7 @@ export default function HostVanLayout() {
   return (
     <div>
       <div className="py-4">
-        <Link to="/host/vans">Back To all vans</Link>
+        <Link to=".." relative="path" > &larr; Back To all vans</Link>
       </div>
       <div className="bg-white p-4 rounded">
         <article className="flex gap-4 items-center my-2 rounded-md">

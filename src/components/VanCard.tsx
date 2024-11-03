@@ -8,15 +8,16 @@ interface VanCardProps {
     name: string;
     price: number;
     type: string; 
+    typeFilter?: string | null;
 }
 
 
-export default function VanCard({id, imageUrl, name, price, type }: VanCardProps) {
+export default function VanCard({id, imageUrl, name, price, type, typeFilter }: VanCardProps) {
 
     return(
         
         <article>
-        <Link to={`/vans/${id}`}>
+        <Link to={`${id}`} state={typeFilter}>
           <div>
             <img src={imageUrl} alt={name} />
           </div>

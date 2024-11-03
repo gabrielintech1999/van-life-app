@@ -13,6 +13,9 @@ import HostVanLayout from "./routes/host/HostVanDetail/HostVanLayout";
 import HostVanPricing from "./routes/host/HostVanDetail/hostVanPricing";
 import HostVanPhotos from "./routes/host/HostVanDetail/hostVanPhotos";
 import HostVanDetail from "./routes/host/HostVanDetail/hostVanDetail";
+import NotFound from "./routes/Not-Found";
+
+
 
 export default function App() {
   return (
@@ -23,23 +26,22 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} />
           <Route path="/vans/:id" element={<VanDetail />} />
-
           <Route path="/host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
             <Route path="vans" element={<HostVans />} />
 
-
-            <Route path="vans/:id" element={<HostVanLayout />} > 
-                <Route index element={<HostVanDetail />} />
-                <Route path="pricing" element={<HostVanPricing />} />
-                <Route path="photos" element={<HostVanPhotos />} />
-
-             </Route>
+            <Route path="vans/:id" element={<HostVanLayout />}>
+              <Route index element={<HostVanDetail />} />
+              <Route path="pricing" element={<HostVanPricing />} />
+              <Route path="photos" element={<HostVanPhotos />} />
+            </Route>
           </Route>
         </Route>
+          <Route path="*" element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
   );
 }
+

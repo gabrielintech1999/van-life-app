@@ -23,9 +23,8 @@ export default function Vans() {
     setVans(data.vans);
   }
 
-  const displayVans = typeFilter === null 
-    ? vans 
-    : vans.filter((van) => van.type === typeFilter);
+  const displayVans =
+    typeFilter === null ? vans : vans.filter((van) => van.type === typeFilter);
 
   useEffect(() => {
     getVans();
@@ -43,45 +42,37 @@ export default function Vans() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 ">
       {/* Filter buttons */}
       <div className="mb-6 flex gap-4">
         <button
           onClick={() => handleFilterChange(null)}
           className={`px-4 py-2 rounded ${
-            typeFilter === null 
-              ? "bg-[#135151] text-white" 
-              : "bg-gray-200"
+            typeFilter === null ? "bg-[#135151] text-white" : "bg-gray-200"
           }`}
         >
           All
         </button>
         <button
           onClick={() => handleFilterChange("simple")}
-          className={`px-4 py-2 rounded ${
-            typeFilter === "simple" 
-              ? "bg-[#DD775B] text-white" 
-              : "bg-gray-200"
+          className={`px-4 py-2 rounded hover:text-white  hover:bg-[#DD775B]   ${
+            typeFilter === "simple" ? "bg-[#DD775B] text-white" : "bg-gray-200"
           }`}
         >
           Simple
         </button>
         <button
           onClick={() => handleFilterChange("luxury")}
-          className={`px-4 py-2 rounded ${
-            typeFilter === "luxury" 
-              ? "bg-[#000000] text-white" 
-              : "bg-gray-200"
+          className={`px-4 py-2 rounded  hover:text-white  hover:bg-[#000000]  ${
+            typeFilter === "luxury" ? "bg-[#000000] text-white" : "bg-gray-200"
           }`}
         >
           Luxury
         </button>
         <button
           onClick={() => handleFilterChange("rugged")}
-          className={`px-4 py-2 rounded ${
-            typeFilter === "rugged" 
-              ? "bg-[#135151] text-white" 
-              : "bg-gray-200"
+          className={`px-4 py-2 rounded  hover:text-white  hover:bg-[#135151]  ${
+            typeFilter === "rugged" ? "bg-[#135151] text-white" : "bg-gray-200"
           }`}
         >
           Rugged
@@ -98,6 +89,7 @@ export default function Vans() {
             name={van.name}
             price={van.price}
             type={van.type}
+            typeFilter={typeFilter}
           />
         ))}
       </main>
