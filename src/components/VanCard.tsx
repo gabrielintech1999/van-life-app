@@ -7,17 +7,21 @@ interface VanCardProps {
     imageUrl: string; 
     name: string;
     price: number;
-    type: string; 
+    type: string;
+    searchParams: URLSearchParams;
     typeFilter?: string | null;
 }
 
 
-export default function VanCard({id, imageUrl, name, price, type, typeFilter }: VanCardProps) {
+export default function VanCard({id, imageUrl, name, price, type, searchParams, typeFilter }: VanCardProps) {
 
     return(
         
         <article>
-        <Link to={`${id}`} state={typeFilter}>
+        <Link to={`${id}`} state={{
+          search: `?${searchParams.toString()}`,
+          type: typeFilter || "all"
+        }}>
           <div>
             <img src={imageUrl} alt={name} />
           </div>

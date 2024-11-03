@@ -18,9 +18,11 @@ interface ApiResponse {
 
 export default function VanDetail(): JSX.Element {
   const { id } = useParams();
-  const {state} = useLocation()
-  console.log(state);
-  
+  const location = useLocation()
+
+  const search = location.state?.search || "";
+  const type = location.state?.type || "all";
+
   const [van, setVan] = useState<Van | null>(null);
 
   const getVan = useCallback(async (): Promise<void> => {
@@ -44,7 +46,7 @@ export default function VanDetail(): JSX.Element {
       <div>
         <div>
         <div className="py-4">
-        <Link to={`..?${state === null ? "": `type=${state}`}`} relative="path"> &larr; Back To {state ? state :"all"} vans</Link>
+        <Link to={`..?${search}`} relative="path"> &larr; Back To {type} vans</Link>
       </div>
         </div>
         <div>

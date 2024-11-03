@@ -9,6 +9,10 @@
 - [x] make the van page
 - [x] make the van detail page
 - [x] make the layout
+- [x] add a 404 not found page
+- [x] add filter feature
+- [x] add maintaining filter state during navigation
+- [] handling errors
 
 
 ## Stack
@@ -40,5 +44,6 @@
 ## features
 - Filters
 - preserving filter state | maintaining filter state during navigation
+- handling
 - User Registration/Login
 
