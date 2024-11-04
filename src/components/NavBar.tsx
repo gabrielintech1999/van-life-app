@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <header className="text-center p-4 text-white flex gap-2 justify-between">
+    <header className="text-center p-4 text-black flex gap-2 justify-between">
       <div className="uppercase font-bold text-xl ">
         <NavLink to="/">
           <h1>#vanlife</h1>
